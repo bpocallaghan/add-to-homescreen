@@ -18,8 +18,9 @@ abstract class TestCase extends Orchestra
 
     private function cleanOutputDirectory(): void
     {
+        // cleanup after every command
         if (File::isDirectory('public')) {
-            File::deleteDirectories('public');
+            File::deleteDirectory('public');
         }
 
         //if (File::isDirectory('resources')) {

@@ -52,8 +52,7 @@ class InstallCommand extends GeneratorCommand
         $this->appPath = $this->basePath . "app" . $this->ds;
 
         $this->copyFavicons();
-
-        //$this->copyFiles();
+        $this->copyPublicRootFiles();
     }
 
     /**
@@ -67,31 +66,16 @@ class InstallCommand extends GeneratorCommand
     }
 
     /**
-     * Copy the config file to the default config folder
+     * Copy the manifest.json and serviceworker.js
      */
-    private function copyConfigFile()
+    private function copyPublicRootFiles()
     {
-        $path = $this->getConfigPath();
-
-        // if generatords config already exist
-        if ($this->files->exists($path) && $this->option('force') === false) {
-            $this->error("{$path} already exists! Run 'generate:publish-stubs --force' to override the config file.");
-            die;
-        }
-
-        File::copy(__DIR__ . '/../config/config.php', $path);
-    }
-
-
-
-    /**
-     * Update stubs path in the new published config file
-     */
-    private function updateStubsPathsInConfigFile()
-    {
-        $updated = str_replace('vendor/bpocallaghan/generators/', '',
-            File::get($this->getConfigPath()));
-        File::put($this->getConfigPath(), $updated);
+        $source = [
+            "{$this->basePath}resources{$this->ds}manifest.json",
+            "{$this->basePath}resources{$this->ds}serviceworker.js",
+        ];
+        $destination = "public{$this->ds}";
+        $this->copyFilesFromSource($source, $destination);
     }
 
     /**

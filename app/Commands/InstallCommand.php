@@ -51,6 +51,7 @@ class InstallCommand extends GeneratorCommand
         $this->basePath = __DIR__ . $this->ds . '..' . $this->ds . '..' . $this->ds;
         $this->appPath = $this->basePath . "app" . $this->ds;
 
+        $this->copyJsFile();
         $this->copyFavicons();
         $this->copyPublicRootFiles();
     }
@@ -75,6 +76,16 @@ class InstallCommand extends GeneratorCommand
             "{$this->basePath}resources{$this->ds}serviceworker.js",
         ];
         $destination = "public{$this->ds}";
+        $this->copyFilesFromSource($source, $destination);
+    }
+
+    /**
+     * Copy the manifest.json and serviceworker.js
+     */
+    private function copyJsFile()
+    {
+        $source = "{$this->basePath}resources{$this->ds}js{$this->ds}a2h.js";
+        $destination = "resources{$this->ds}js{$this->ds}";
         $this->copyFilesFromSource($source, $destination);
     }
 

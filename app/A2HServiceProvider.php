@@ -16,7 +16,7 @@ class A2HServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //
+        $this->loadViewsFrom(__DIR__ . '/../resources/views', 'a2h');
     }
 
     /**

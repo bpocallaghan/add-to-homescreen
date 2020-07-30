@@ -9,6 +9,7 @@ class InstallCommandTest extends TestCase
     {
         $this->artisan('a2h:install');
 
+        $this->assertFileExists('resources/js/a2h.js');
         $this->assertFileExists('public/manifest.json');
         $this->assertFileExists('public/serviceworker.js');
         $this->assertFileExists('public/images/favicons/16x16.png');
@@ -27,6 +28,9 @@ class InstallCommandTest extends TestCase
             ->expectsQuestion("Above is a list of the files that already exist. Override all files?",
                 true)
             // favicons
+            ->expectsQuestion("Above is a list of the files that already exist. Override all files?",
+                true)
+            // js file
             ->expectsQuestion("Above is a list of the files that already exist. Override all files?",
                 true);
 

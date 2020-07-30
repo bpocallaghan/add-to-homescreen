@@ -13,12 +13,20 @@ php artisan a2h:install
 
 ### Usage
 - run `php artisan a2h:install` to copy the files over to your project
+- include the javascript file and initialize like `new A2HClass();` in your main `app.js`
 - Add the below in your master layout file
 ```
 <meta name="theme-color" content="#ffffff"/>
 
 <link rel="manifest" href="/manifest.json">
+
+@include('a2h::a2h')
 ```
+
+### Customize
+- can update the favicons with your logo
+- can update the js file where needed (to send an ajax to server)
+- can include your own view file (for html and styles)
 
 ### Output
  - Install command will copy the favicons to `/public/images/favicons`

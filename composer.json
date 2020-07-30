@@ -1,0 +1,49 @@
+{
+    "name": "bpocallaghan/add-to-homescreen",
+    "description": "Add to home screen (A2HS): Easy way to add 'install app' for your websites.",
+    "keywords": [
+        "laravel",
+        "homescreen",
+        "a2hs",
+        "install",
+        "app"
+    ],
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Ben-Piet O'Callaghan",
+            "email": "bpocallaghan@gmail.com",
+            "role": "Developer"
+        }
+    ],
+    "require": {
+        "php": "^7.2.5",
+        "symfony/console": "^5.0",
+        "laravel/framework": "^7.0"
+    },
+    "require-dev": {
+        "orchestra/testbench": "5.*"
+    },
+    "autoload": {
+        "psr-4": {
+            "Bpocallaghan\\A2H\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Bpocallaghan\\A2H\\Tests\\": "tests"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Bpocallaghan\\A2H\\A2HServiceProvider"
+            ]
+        }
+    },
+    "scripts": {
+        "test": "phpunit"
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
+}

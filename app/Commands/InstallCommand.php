@@ -2,12 +2,16 @@
 
 namespace Bpocallaghan\A2H\Commands;
 
+use Bpocallaghan\A2H\Traits\CopyFilesHelpers;
+use Illuminate\Filesystem\Filesystem;
 use Illuminate\Support\Facades\File;
 use Illuminate\Console\GeneratorCommand;
 use Symfony\Component\Console\Input\InputOption;
 
 class InstallCommand extends GeneratorCommand
 {
+    use CopyFilesHelpers;
+
     /**
      * The console command name.
      *
@@ -23,22 +27,43 @@ class InstallCommand extends GeneratorCommand
     protected $description = 'Copy the manifest.json, favicon and serviceworker.js files.';
 
     /**
+     * The filesystem instance.
+     *
+     * @var Filesystem
+     */
+    protected $filesystem;
+
+    private $appPath;
+
+    private $basePath;
+
+    // directory separator
+    private $ds;
+
+    /**
      * Execute the command
      */
     public function handle()
     {
-        $this->copyFiles();
+        // save local vars
+        $this->filesystem = $this->files;
+        $this->ds = DIRECTORY_SEPARATOR;
+        $this->basePath = __DIR__ . $this->ds . '..' . $this->ds . '..' . $this->ds;
+        $this->appPath = $this->basePath . "app" . $this->ds;
+
+        $this->copyFavicons();
+
+        //$this->copyFiles();
     }
 
     /**
-     * Copy files
+     * Copy the favicons directory
      */
-    private function copyFiles()
+    private function copyFavicons()
     {
-        // copy manigest.json to /public
-        // copy the favicons to /public/images/favicons
-        // copy the serviceworker.js to /public
-        // update master layout
+        $source = "{$this->basePath}resources{$this->ds}images{$this->ds}favicons";
+        $destination = "public{$this->ds}images{$this->ds}favicons";
+        $this->copyFilesFromSource($source, $destination);
     }
 
     /**
@@ -57,21 +82,7 @@ class InstallCommand extends GeneratorCommand
         File::copy(__DIR__ . '/../config/config.php', $path);
     }
 
-    /**
-     * Copy the stubs directory
-     */
-    private function copyStubsDirectory()
-    {
-        $path = $this->option('path');
 
-        // if controller stub already exist
-        if ($this->files->exists($path . DIRECTORY_SEPARATOR . 'controller.stub') && $this->option('force') === false) {
-            $this->error("Stubs already exists! Run 'generate:publish-stubs --force' to override the stubs.");
-            die;
-        }
-
-        File::copyDirectory(__DIR__ . '/../../resources/stubs', $path);
-    }
 
     /**
      * Update stubs path in the new published config file
@@ -100,9 +111,7 @@ class InstallCommand extends GeneratorCommand
      */
     protected function getOptions()
     {
-        return [
-            ['force', null, InputOption::VALUE_NONE, 'Warning: Override files if it already exist']
-        ];
+        return [];
     }
 
     /**

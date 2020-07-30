@@ -11,14 +11,14 @@ Laravel 6+
 php artisan a2h:install
 ```
 
-### Option for all the commands
-`--force` This will override the existing file, if it exists.
-
 ### Usage
 TODO
 - run `php artisan a2h:install` to copy the files over to your project
 - code snippets to update master layout
 - deploy and have fun
+
+### Output
+ - Install command will copy the favicons to `/public/images/favicons`
 
 ## My other Packages
 

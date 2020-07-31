@@ -12,7 +12,7 @@ let A2HClass = function (options) {
 
     // construct
     this.construct = function (options) {
-        // $.extend(vars, options);
+        $.extend(vars, options);
 
         vars.a2hBox = document.getElementById('a2h-box');
 
@@ -22,6 +22,11 @@ let A2HClass = function (options) {
     // initialize - check if we must register
     let initialize = function () {
 
+        // if element not added to dom
+        if (typeof (vars.a2hBox) != 'undefined' && vars.a2hBox != null) {
+            return;
+        }
+
         // user cancelled app install - do not ask again until cookie expires
         if (getCookie(vars.cookieName) === vars.cookieValue) {
             // vars.a2hBox.style.display = 'none';
@@ -29,13 +34,10 @@ let A2HClass = function (options) {
             return;
         }
 
-        // if in standalone - do not activate
+        // if in standalone - do not register
         if (!navigator.standalone) {
             registerServiceWorker();
         }
-
-        // debug / test locally
-        activate();
     }
 
     // register service worker
@@ -43,18 +45,16 @@ let A2HClass = function (options) {
         if ('serviceWorker' in navigator) {
             window.addEventListener('load', function () {
                 navigator.serviceWorker.register('/serviceworker.js').then(function (registration) {
-                    // Registration was successful
-                    console.log('service worker registered');
-                    activate();
+                    // registration successful
+                    activateAndShowInstallBanner();
                 }, function (err) {
                     // registration failed :(
-                    console.log('service worker failed');
                 });
             });
         }
     }
 
-    let activate = function () {
+    let activateAndShowInstallBanner = function () {
         if (!!navigator.platform && /iPad|iPhone|iPod/.test(navigator.platform)) {
             vars.a2hBox.style.display = 'block';
             document.querySelector('.platform-android').style.display = "none";
@@ -75,6 +75,7 @@ let A2HClass = function (options) {
                 deferredPrompt.userChoice.then(choiceResult, function () {
                     if (choiceResult.outcome === 'accepted') {
                         // UTILS.doAjax("/api/a2h/installed");
+                        vars.a2hBox.style.display = 'none';
                     } else {
                         rejectHomeScreen();
                     }

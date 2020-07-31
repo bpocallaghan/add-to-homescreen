@@ -1,4 +1,4 @@
-<div id="a2h-box" style="display: none; position: fixed; top: 0; left: 0; right: 0; height: auto; width: 100%; z-index: 9999; min-height: 40px; color: #282b2d; background-color: #e7efff; padding: 5px 20px 5px 20px; border-bottom: 2px solid #191919;">
+<div id="a2h-box" style="display: none; position: fixed; top: 0; left: 0; right: 0; height: auto; width: 100%; z-index: 9999; min-height: 40px; color: #282b2d; background-color: #e7efff; padding: 10px 15px; border-bottom: 2px solid #191919;">
     <div class="row">
         <div class="col-6">
             <span style="line-height: 30px;">Install {{ config('app.name') }} App?</span>

@@ -1,6 +1,7 @@
 # Add To Home Screen
 
-Add to home screen (A2HS): Easy way to add 'install app' for your websites.
+Add to home screen (A2HS)
+The Easy way to add 'install app' for your websites.
 
 ```
 Laravel 6+

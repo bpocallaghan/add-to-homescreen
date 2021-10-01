@@ -1,9 +1,10 @@
 # Add To Home Screen
 
-Add to home screen (A2HS): Easy way to add 'install app' for your websites.
+Add to home screen (A2HS)
+The Easy way to add 'install app' for your websites.
 
 ```
-Laravel 6+    
+Laravel 6+
 ```
 
 ## Commands
@@ -36,7 +37,7 @@ php artisan a2h:install
 
 ## My other Packages
 
-- [Generators](https://github.com/bpocallaghan/generators) Easily File Generators with a config file and publishable stubs. 
+- [Generators](https://github.com/bpocallaghan/generators) Easily File Generators with a config file and publishable stubs.
 - [Notify](https://github.com/bpocallaghan/notify) Laravel Flash Notifications with icons and animations and with a timeout
 - [Alert](https://github.com/bpocallaghan/alert) A helper package to flash a bootstrap alert to the browser via a Facade or a helper function.
 - [Sluggable](https://github.com/bpocallaghan/sluggable) Provides a HasSlug trait that will generate a unique slug when saving your Laravel Eloquent model.

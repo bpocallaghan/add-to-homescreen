@@ -31,7 +31,7 @@ php artisan a2h:install
 - update the favicons with your logo
 - update the js file where needed (e.g. to send an ajax to server)
 - include your own view file (for html and styles)
-- update ah2.blade to change text
+- update ah2.blade to change default button text
 
 ### Output
  - Install command will copy the favicons to `/public/images/favicons`

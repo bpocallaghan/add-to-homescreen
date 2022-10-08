@@ -26,11 +26,12 @@ php artisan a2h:install
 @endif
 ```
 
-### Customize
+### Customise
 - update manifest.json
 - update the favicons with your logo
-- you can update the js file where needed (to send an ajax to server)
-- you can include your own view file (for html and styles)
+- update the js file where needed (e.g. to send an ajax to server)
+- include your own view file (for html and styles)
+- update ah2.blade to change text
 
 ### Output
  - Install command will copy the favicons to `/public/images/favicons`

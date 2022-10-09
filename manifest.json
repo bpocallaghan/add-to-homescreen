@@ -1,0 +1,21 @@
+{
+    "name": "My App",
+    "short_name": "Awesome App",
+    "icons": [
+        {
+            "src": "/images/favicon/192x192.png",
+            "type": "image/png",
+            "sizes": "192x192"
+        },
+        {
+            "src": "/images/favicon/512x512.png",
+            "type": "image/png",
+            "sizes": "512x512"
+        }
+    ],
+    "start_url": "/home?source=pwa",
+    "display": "standalone",
+    "theme_color": "#ffffff",
+    "background_color": "#fefefe",
+    "description": "Download my awesome app that will make you fall in love with Laravel."
+}

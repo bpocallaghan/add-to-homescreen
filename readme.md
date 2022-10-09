@@ -14,10 +14,10 @@ php artisan a2h:install
 
 ### Usage
 - run `php artisan a2h:install` to copy the files over to your project
-- include the javascript file and initialize like `new A2HClass();` in your main `app.js`
+- include the javascript file and initialise like `new A2HClass();` in your main `app.js`
 - Add the below in your master layout file
 ```
-<meta name="theme-color" content="#ffffff"/>
+<meta name="theme-color" content="#fff"/>
 
 <link rel="manifest" href="/manifest.json">
 
